@@ -1,0 +1,126 @@
+﻿@model ViewModels.ProfilePageViewModel
+@{
+    ViewBag.Title = Model.FirstName + " " + Model.LastName;
+}
+<!--End container from _Layout ### shows no starting tag because it starts on _Layout-->
+</div>
+
+<!--Create full container for background image-->
+<div class="full-container profile-background" id="cover-photo" style="width:100%;height:100%;background: url(../../Images/@Model.CoverPhotoPath) no-repeat 50% 50% fixed;background-size: cover;-moz-background-size: cover;-o-background-size: cover;-webkit-background-size: cover;" alt="@Model.CoverPhotoName" ></div>
+
+<!--Start new container ### shows no ending tag because it's on _Layout-->
+<div class="container body-content" id="profile-body">
+
+    <div class="header-container">
+        <img src="~/Images/@Model.ProfilePicturePath" id="profile-picture" alt="@Model.ProfilePictureName" class="btn btn-default btn-image-action"  href="#lightbox" data-toggle="modal"  />
+             <br />
+        @if (Model.CurrentUserID != Model.UserID)
+        {
+            if ((int)Model.RelationshipStatus == 4)
+            {
+                <button id="add-friend-btn" style="margin-left:140px;"onclick="AddFriend('@Model.UserID')">Add Friend</button>
+            }
+            else if (Model.RelationshipStatus == 0)
+            {
+                <button id="add-friend-btn" style="margin-left:148px;">Pending</button>
+            }
+            else
+            {
+                <button id="add-friend-btn" style="margin-left:150px;"disabled>Friends</button>
+            }
+            <button id="send-message-btn"  onclick="SelectUser('@Model.RelationshipID', '@Model.UserID')">Message</button>
+        } else
+        {
+            <button id="edit-wallpaper-btn"  href="#paperbox" data-toggle="modal" data-slide-to="0" >Change Wallpaper</button>
+        }
+    </div>
+
+    <br />
+
+    <!-- Nav tabs -->
+    <div id="navbar-tabs">
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <ul class="nav nav-pills nav-justified" role="tablist">
+                    <li class="nav-item active">
+                        <a class="nav-link" data-toggle="tab" href="#reviews" role="tab"><i class="fa fa-globe fa-3x"></i><br /><font>Reviews</font></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#posts" role="tab"><i class="fa fa-pencil-square fa-3x"></i><br /><font>Posts</font></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#profile-photos" role="tab"><i class="fa fa-picture-o fa-3x"></i><br /><font>Photos</font></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#friends" role="tab"><i class="fa fa-users fa-3x"></i><br /><font>Friends</font></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#about" role="tab"><i class="fa fa-home fa-3x"></i><br /><font>About</font></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    @if ((int)Model.RelationshipStatus == 1 || Model.Private == false)
+    {
+        <!-- Tab panes -->
+        <div id="tab-content" class="tab-content">
+            @{
+                Html.RenderAction("_Reviews", "Users", Model.UserID);
+                Html.RenderAction("_Posts", "Users", Model.UserID);
+                Html.RenderAction("_Friends", "Users", Model.UserID);
+                Html.RenderAction("_Photos", "Users", Model.UserID);
+                Html.RenderAction("_About", "Users", Model.UserID);
+            }
+        </div>
+
+
+     }
+
+
+   @{ Html.RenderAction("_PhotoLightBox", "Users", Model.UserID);
+}
+
+    <!--This is the modal: place this where ever-->
+    @{ Html.RenderAction("_WallpaperLightBox", "Users", Model.UserID);
+    }
+
+
+
+     
+<script>
+    //CALL: AddFriend function
+    function AddFriend(ID) {
+        $.ajax({
+            type: "POST",
+            url: "/Relationships/AddFriend?targetUserID=" + ID,
+            success: function () {
+                var friendBtn = document.getElementById("add-friend-btn");
+                friendBtn.innerText = "Pending";
+                friendBtn.disabled = true;
+            }
+        });
+    }
+
+    /*---Navbar Fixed---*/
+    $(window).on('scroll', function() {
+        var scrollTop = $(window).scrollTop();
+
+        if (scrollTop >= 280) {
+            $("#navbar-tabs").addClass("fixed");
+            $("#tab-content").addClass("tab-content-relative");
+        } else {
+            $("#navbar-tabs").removeClass("fixed");
+            $("#tab-content").removeClass("tab-content-relative");
+        }
+    });
+
+    //function PlaceTabContent() {
+    //    var scrollTop = $(window).scrollTop();
+    //    if (scrollTop >= 307) {
+    //        var content = document.getElementById("tab-content");
+    //        content.style.top = "144px";
+    //    }
+    //}
+</script>

@@ -1,0 +1,17 @@
+﻿@model IEnumerable<ViewModels.RelationshipViewModel>
+
+
+<div id="friends" class="tab-pane" role="tabpanel">
+    <div class="row">
+        <div class="col-sm-12">
+            <ul id="friend-list">
+            @foreach (var item in Model)
+            {
+                <li onclick="ViewProfile('@item.UserID')"><a><img src="../Images/@item.ProfilePicture" />@item.FirstName @item.LastName</a></li>
+            }
+            </ul>
+        </div>
+    </div>
+</div>
+
+

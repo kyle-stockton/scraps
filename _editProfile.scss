@@ -1,0 +1,77 @@
+/*---Users/EditProfile---*/
+
+.input-file {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.input-file + label {
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    background-color: black;
+    display: inline-block;
+    cursor: pointer;
+    padding: 6px 13px;
+    border-radius: 4px;
+}
+
+.input-file:focus + label,
+.input-file + label:hover {
+    background-color: #62B18B;
+}
+
+.input-file:focus + label {
+	outline: 1px dotted #000;
+	outline: -webkit-focus-ring-color auto 5px;
+}
+
+#autoCompleteInput {
+    display: none;
+}
+.edit-profile-container{
+    padding: 10px;
+    width:540px;
+    position:absolute;
+    top:100px;
+    right:15%;
+    margin-bottom:50px;
+    background-color:rgba(102,0,102,0.5);
+    color:rgb(230,230,230);
+
+    #pastLocal0Input, #favoritePlace0Input{
+        margin-bottom:-10px;
+    }
+    
+    .text-box{
+        background-color:rgba(77,0,77,0.6);
+        color:inherit;
+    }
+
+    .chkbx{
+        padding-top:5px;
+    }
+}
+#bg-img{
+    margin-top:-20px;
+    margin-left:-105px;
+    object-fit:cover;
+    width:100%;
+    height:100%;
+    position:fixed;
+}
+
+/*
+.edit-group i {
+    position: absolute;
+    left: 260px;
+}*/
+
+@media (min-width: 768px){
+
+}
+

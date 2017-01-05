@@ -1,0 +1,30 @@
+﻿@model ViewModels.ImageViewModel
+@using Microsoft.AspNet.Identity
+
+@helper photos()
+{
+int i = 0;
+    <ul id="photo-list">
+        @foreach (var item in Model.Images)
+        {
+        <li class="user-photo-container">
+            <img src="~/Images/@item.UserID/@item.Path" class="user-photos" alt="@item.FileName" href="#lightbox" data-toggle="modal" data-slide-to="@i" />
+        </li>
+        i++;
+        }
+    </ul>
+}<!--End Helper-->
+
+<div id="profile-photos" class="tab-pane" role="tabpanel">
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            @photos()
+        </div>
+    </div>
+</div>
+
+<!--This is the modal: place this where ever-->
+@{ Html.RenderAction("_PhotoLightBox", "Users", Model.UserID);
+}
+
+

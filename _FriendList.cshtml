@@ -1,0 +1,29 @@
+﻿@model IEnumerable<ViewModels.RelationshipViewModel>
+
+    <li id="friend-icon" class="dropdown">
+        <a class="dropdown-toggle">
+            <i class="fa fa-group fa-2x"></i>
+        </a>
+        <div id="friend-request-notification"></div>
+            <ul id="navbar-friend-list" class="dropdown-menu nav-list">
+                <li><h5>Friends @Model.Count()</h5></li>
+@if (Model.Count() != 0)
+{
+                foreach (var item in Model)
+                {
+                    <li class="friend-request-item" relID="@item.RelationshipID">
+                        <img src="../Images/@item.ProfilePicture" />
+                        <a onclick="ViewProfile('@item.UserID')">@item.FirstName @item.LastName</a>
+                        <div class="friend-btn-container">
+                            <a class="friend-request-btn" onclick="SelectUser('@item.RelationshipID','@item.UserID')">Chat</a>
+                            <a class="friend-request-btn" onclick="ViewProfile('@item.UserID')">Profile</a>
+                        </div>
+
+                    </li>
+                }
+}
+
+
+            </ul>
+    </li>
+

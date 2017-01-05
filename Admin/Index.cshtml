@@ -1,0 +1,118 @@
+﻿@model PagedList.IPagedList<ViewModels.AdminUserViewModel>
+@using PagedList.Mvc;
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<script>
+    // Trigger button click when enter key is pressed in textbox
+    $(function () {
+        $("#searchString").on("keydown", function (event) {            
+                if (event.keyCode == 13) {
+                    event.preventDefault();
+                    document.getElementById("searchButton").click();
+                }
+            });
+        return false;
+        });
+</script>
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm("Index", "Admin"))
+{
+    <p>
+        Find by name: @Html.TextBox("searchString", ViewBag.CurrentFilter as string)
+        <input id ="searchButton" type="submit" value="Search"/>
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            Email
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Days
+        </th>
+        <th>
+            Favorite Place
+        </th>
+        <th>
+            Hometown
+        </th>
+        <th>
+            Flagged Posts
+        </th>
+        <th>
+            Flagged Reviews
+        </th>
+        <th>
+            Locked Out
+        </th>
+        <th>
+            Lockout End Date in UTC
+        </th>
+        <th>
+            Role
+        </th>
+        <th>
+            Modify
+        </th>
+    </tr>
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(item => item[i].Email)
+            </td>
+            <td>
+                @(Model[i].LastName + ", " + Model[i].FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(item => item[i].DaysAsMember)
+            </td>
+            <td>
+                @Html.DisplayFor(item => item[i].FavoritePlaceName)
+            </td>
+            <td>
+                @Html.DisplayFor(item => item[i].HomeTownName)
+            </td>
+            <td>
+                @Html.DisplayFor(item => item[i].PostFlag)
+            </td>
+            <td>
+                @Html.DisplayFor(item => item[i].ReviewFlag)
+            </td>
+            <td>
+                @Html.DisplayFor(item => item[i].LockOutEnabled)
+            </td>
+            <td>
+                @Html.DisplayFor(item => item[i].LockOutEndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(item => item[i].Role)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { Id = Model[i].Id }) |
+                @Html.ActionLink("Details", "Details", new { Id = Model[i].Id })
+
+            </td>
+        </tr>
+
+    }
+
+</table>
+<br />
+@*Adding Paged List*@
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

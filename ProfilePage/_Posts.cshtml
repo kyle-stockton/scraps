@@ -1,0 +1,11 @@
+﻿@model IEnumerable<ViewModels.NewsFeedViewModel>
+
+<div id="posts" class="tab-pane" role="tabpanel">
+    <div class="row">
+            <ul id="post-list">
+                @Html.Partial("_Newsfeed", Model)
+            </ul>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/postInteractions")

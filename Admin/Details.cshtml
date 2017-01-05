@@ -1,0 +1,89 @@
+﻿@model ViewModels.AdminUserViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+  
+    
+    <dl class="row">
+        <dt class="col-md-2">
+            Email
+        </dt>
+
+        <dd class="col-md-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-md-2">
+            Name
+        </dt>
+
+        <dd class="col-md-10">
+            @(Model.LastName + ", " + Model.FirstName)
+        </dd>
+
+        <dt class="col-md-2">
+            Days as member
+        </dt>
+
+        <dd class="col-md-10">
+            @Html.DisplayFor(model => model.DaysAsMember)
+        </dd>
+
+        <dt class="col-md-2">
+            Favorite Place
+        </dt>
+
+        <dd class="col-md-10">
+            @Html.DisplayFor(model => model.FavoritePlaceName)
+        </dd>
+
+        <dt class="col-md-2">
+            Home Town
+        </dt>
+        <dd class="col-md-10">
+            @Html.DisplayFor(model => model.HomeTownName)
+        </dd>
+
+        <dt class="col-md-2">
+            Flagged Posts
+        </dt>
+        <dd class="col-md-10">
+            @Html.DisplayFor(model => model.PostFlag)
+        </dd>
+
+        <dt class="col-md-2">
+            Flagged Reviews
+        </dt>
+        <dd class="col-md-10">
+            @Html.DisplayFor(model => model.ReviewFlag)
+        </dd>
+
+        <dt class="col-md-2">
+            Role
+        </dt>
+        <dd class="col-md-10">
+            @Html.DisplayFor(model => model.Role)
+        </dd>
+
+        <dt class="col-md-2">
+            Lockout Enabled
+        </dt>
+        <dd class="col-md-10">
+            @Html.DisplayFor(model => model.LockOutEnabled)
+        </dd>
+        <dt class="col-md-2">
+            Lockout End Date
+        </dt>
+        <dd class="col-md-10">
+            @Html.DisplayFor(model => model.LockOutEndDate)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

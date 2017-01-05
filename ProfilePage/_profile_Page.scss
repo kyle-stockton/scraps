@@ -1,0 +1,398 @@
+/*---Profile Photos---*/
+#profile-body{
+    width:100%;
+    .header-container {
+    margin-top: 2%;
+    width:25%;
+//    padding-top: 125px;
+
+    button {
+                margin-left:120px;
+        border: 1px solid #fff;
+        background-color: #62B18B;
+        color: #ebebeb;
+        padding: 3px 8px;
+    }
+
+    & button:hover {
+        background-color: #ebebeb;
+        border: 1px solid #62B18B;
+        color: #62B18B;
+    }
+}
+    #send-message-btn{
+        margin-left:145px;
+        margin-top:10px;
+
+    }
+    #edit-wallpaper-btn {
+
+}
+
+#profile-picture {
+//    object-fit: cover;
+    margin-left:80px;
+    width: 200px;
+    height: 200px;
+    border: 2px solid rgba(0,0,0,0.7);
+    border-radius: 100px;
+    margin-bottom: 10px;
+}
+
+.profile-background{
+}
+
+/*---Change Wallpaper lightbox---*/
+#paperbox{
+
+    #paperbox-body{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    }
+}
+
+
+/*---Navbar Tabs---*/
+#navbar-tabs {
+    background-color: rgba(0, 0, 0,.7);
+    z-index: 1000;
+    margin-top:-200px;
+    width:100%;
+    display:inherit;
+    i {
+        color: #91D0B2;
+    }
+    .nav-pills{
+        width:80%;
+        float:right;
+
+        nav-item{
+            width:100px;
+        }
+    }
+    .nav-pills > li > a {
+        border-radius: unset;
+        color: #fff;
+    }
+
+    .nav-pills > li > a:hover {
+        color: #91D0B2;
+    }
+    
+    .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+        background-color: #666666;
+    }
+}
+
+.tab-content {
+    margin-top: 20px;
+    float:right;
+}
+
+.fixed {
+    position: fixed;
+    top: 51px;
+    left: 15px; 
+    width: 100%;
+}
+
+.tab-content-relative {
+    position: relative;
+    top: 52px;
+    margin-bottom: 52px;
+}
+
+.tab-content-click {
+    top: 144px;
+}
+
+//Reviews
+#reviews{
+    height:25em;
+    width:80em;
+    margin-right:1em;
+ul{
+    height:24em;
+    overflow-y:scroll;
+    list-style:none;
+}
+}
+
+//Posts
+#post-list{
+    background-color: rgba(10, 0, 20,.1);
+    height:24em;
+        border: 1px solid #62B18B;
+
+    float:right;
+    padding-right:2.5em;
+    margin-right:1em;
+    width:75em;
+    overflow-y:scroll;
+    overflow-x:hidden;
+}
+
+//Photos
+#profile-photos{
+    width:80em;
+    float:right;
+    padding-right:0em;
+    height:25em;
+    list-style:none;
+    #photo-list{
+        float:right;
+        margin-right:0em;
+        height:24em;
+        width:78em;
+        overflow-y:scroll;
+    }
+}
+
+//Friends
+#friends{
+    float:right;
+    width:70em;
+#friend-list {
+    width:100%;
+    padding-right:0em;
+    padding-left:4em;
+    background-color: rgba(10, 0, 20,.7);
+    float:right;
+//    padding-left: 0em;
+    //border: 2px solid #62B18B;
+//    list-style: none;
+    height:24em;
+//    width:78em;
+    overflow-y:scroll;
+    overflow-x:hidden;
+
+}
+
+#friend-list li {
+    list-style: none;
+    font-size: 18px;
+    color:#91D0B2;
+    border: 1px solid #62B18B;
+    margin-top:1em;
+    margin-left:1em;
+    background-color: rgba(0,0,102,0.5);
+}
+
+#friend-list li:hover {
+    cursor: pointer;
+    background-color: #410141;
+    border: 1px solid #FFFFFF;
+}
+
+#friend-list a {
+    color: #62B18B;
+}
+
+#friend-list a:hover {
+    text-decoration:none;
+    color:unset;
+}
+
+#friend-list img {
+    width: 88px;
+    height: 80px;
+    margin-right: 15px;
+    background-color: #000;
+    border-right: 1px solid #62B18B;
+}
+
+}
+
+#about {
+    height:21.5em;
+    width:72em;
+    background-color: rgba(10, 0, 20, 0.7);
+    color: #B1F0D2;
+    border: 2px solid #91D0B2;
+   .about-image{
+       margin-top:.5em;
+       margin-left:.5em;
+   #about-picture {
+    float:left;
+    width: 200px;
+    height: 200px;
+    border: 2px solid rgba(0,0,0,0.7);
+    border-radius: 100px;
+//    margin-bottom: 10px;
+}
+   }
+   #about-intro{
+       margin-left:3em;
+          .about-about {
+    height:4em;
+    width:40em;
+    box-shadow:inset 1px 1px 5px #000;
+    border-radius:5px;
+    margin:inherit;
+    margin-left:0px;
+    overflow-y:auto;
+    list-style:none;
+        ul {
+        width:107%;
+        margin:auto;
+        overflow-y:scroll;
+        }
+    }
+}
+   #about-stats{
+       margin-top:20px;
+       float:right;
+       display:block;
+   }
+   #about-stats-large{
+       display:none;
+   }
+    .about-list {
+    height:30px;
+    overflow-y: auto;
+    overflow-x:hidden;
+    box-shadow:inset 1px 1px 5px #000;
+    border-radius:5px;
+        article {
+        width:100%;
+        height:99px;
+        margin:auto;
+        overflow-y:auto;
+    }
+    
+    }
+
+    .about-descriptor{
+        color: #71B092;
+        font-size: 19px;
+        margin-top:3px;
+    }
+    .about-value{
+        
+        font-size:18px;
+        color: white;
+    }
+    .about-clickable:hover{
+        
+        cursor: pointer;
+     }
+    h1{
+        font-size:36px;
+    }
+    h2{
+        font-size:30px;
+        color: white;
+    }
+/*    h3{
+        padding-bottom:0px;
+        margin-bottom:0px;
+
+    }
+    h4{
+        padding-bottom:0px;
+        margin-bottom:0px;
+    }
+*/        
+    h5{
+        font-size:16px;
+    }
+}
+
+}
+
+
+//---- Small -----//
+@media (min-width: 767px){
+
+#friend-list {
+    padding: 0 0 10px 0;
+}
+
+#friend-list li {
+    font-size: 20px;
+    margin: 10px;
+    width: 45%;
+    float: left;
+}
+
+
+#friend-list img {
+    width: 110px;
+    height: 100px;
+}
+
+}
+
+// Medium
+@media (min-width: 992px) {
+
+
+
+
+
+}
+
+// Large
+@media (min-width: 992px) {
+
+}
+
+//X-Large
+@media (min-width: 1600px) {
+    #profile-body{
+        font-size:17px;
+        #reviews{
+            height:33em;
+            ul{
+                height:32em;
+            }
+        }
+    #post-list{
+        height:32em;
+        overflow-y:scroll;
+        overflow-x:hidden;
+    }
+    #friends{
+        height:33em;
+        #friend-list{
+            height:32em;
+
+    }
+        #friend-list li {
+            font-size:24px;
+            }
+    }
+
+        #profile-photos{
+            height:33em;
+            width:120em;
+            #photo-list{
+                height:32em;
+            }
+    }
+        #about{
+            font-size:20px;
+            width:60em;
+            height:28em;
+            .about-image{
+                margin-top:1em;
+                margin-left:1em;
+            }
+            #about-intro{
+                .about-about{
+                    height:8em;
+                    margin-bottom:2em;
+                }
+
+            }
+            #about-stats{
+                display:none;
+            }
+            .about-stats-large{
+                display:block;
+                margin-top:5em;
+                padding-bottom:-.5em;
+            }
+        }
+        }
+}

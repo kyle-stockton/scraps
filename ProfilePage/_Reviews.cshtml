@@ -1,0 +1,81 @@
+﻿@model IEnumerable<ViewModels.ReviewViewModel>
+
+
+<div id="reviews" class="tab-pane active in" role="tabpanel">
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+            <ul>
+                @foreach (var item in Model)
+            {
+                    <li class="review-container">
+                        <div class="row">
+                            <div class="col-sm-7 place-details">
+                                <h3>@Html.ActionLink(item.PlaceName, "DisplayReviews", "Reviews", new { item.PlaceID }, null )</h3>
+                                @*<a href='@Url.Action("DisplayReviews", "Reviews", @item.PlaceID)'><h3>@item.PlaceName</h3></a>*@
+                                <h6><span class="glyphicon glyphicon-map-marker"></span>@item.City, @item.State @item.Country</h6>
+                                <h4>@Html.DisplayFor(modelItem => item.Title)</h4>
+                                <h3 class="place-name"></h3>
+                                <div class="review-body">
+                                    <p>
+                                        <span class="fa fa-quote-left" style="padding-right:5%;"></span>
+                                        @Html.DisplayFor(modelItem => item.Body)
+                                        <span class="fa fa-quote-right" style="padding-left:5%"></span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-sm-5 text-right" id="review-icons">
+                                @Stars(item.StarRating)
+                                <br />
+                                @for (int i = 0; i < item.CostRating; i++)
+                            {
+                            <i class="fa fa-usd dollar-icon"></i>
+                            }
+                                <br />
+                                <h5>@Html.DisplayFor(modelItem => item.DatePosted)</h5>
+                            </div>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- C# Methods -->
+@helper Stars(int? StarRating)
+{
+switch (StarRating)
+{
+    case 1:
+            <i class="fa fa-star-half-o star-icon"></i>
+        break;
+    case 3:
+            @StarCount(StarRating);
+        break;
+    case 5:
+            @StarCount(StarRating);
+        break;
+    case 7:
+            @StarCount(StarRating);
+        break;
+    case 9:
+            @StarCount(StarRating);
+        break;
+    default:
+        for (int i = 0; i < StarRating; i += 2)
+        {
+                <i class="fa fa-star star-icon"></i>
+        }
+        break;
+}
+
+}
+
+@helper StarCount(int? StarRating)
+{
+for (int i = 0; i < StarRating - 1; i += 2)
+{
+        <i class="fa fa-star star-icon"></i>
+}
+    <i class="fa fa-star-half-o star-icon"></i>
+} 

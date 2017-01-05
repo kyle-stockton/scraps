@@ -1,0 +1,112 @@
+﻿@model ViewModels.AdminUserViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h5>Edit</h5>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.FirstName)
+        @Html.HiddenFor(model => model.LastName)
+        @Html.HiddenFor(model => model.Email)
+        @Html.HiddenFor(model => model.PostFlag)
+        @Html.HiddenFor(model => model.ReviewFlag)
+
+        <dl class="row">
+            <dt class="col-md-2">
+                Email
+            </dt>
+
+            <dd class="col-md-10">
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+            <dt class="col-md-2">
+                Name
+            </dt>
+
+            <dd class="col-md-10">
+                @(Model.LastName + ", " + Model.FirstName)
+            </dd>
+
+            <dt class="col-md-2">
+                Days as member
+            </dt>
+
+            <dd class="col-md-10">
+                @Html.DisplayFor(model => model.DaysAsMember)
+            </dd>
+
+            <dt class="col-md-2">
+                Favorite Place
+            </dt>
+
+            <dd class="col-md-10">
+                @Html.DisplayFor(model => model.FavoritePlaceName)
+            </dd>
+
+            <dt class="col-md-2">
+                Home Town
+            </dt>
+            <dd class="col-md-10">
+                @Html.DisplayFor(model => model.HomeTownName)
+            </dd>
+
+            <dt class="col-md-2">
+                Flagged Posts
+            </dt>
+            <dd class="col-md-10">
+                @Html.DisplayFor(model => model.PostFlag)
+            </dd>
+
+            <dt class="col-md-2">
+                Flagged Reviews
+            </dt>
+            <dd class="col-md-10">
+                @Html.DisplayFor(model => model.ReviewFlag)
+            </dd>
+            </dl>
+
+            <div class="form-horizontal">
+
+                <div class="form-group">
+                    <h5 class="control-label col-md-2">Role</h5>
+                    <div>
+                        @Html.DropDownListFor(model => model.Role, Model.Roles, htmlAttributes: new { @class = "form-control col-md-10" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <h5 class="control-label col-md-2">Lockout Enabled</h5>
+                    <div>
+                        @Html.CheckBoxFor(model => model.LockOutEnabled, htmlAttributes: new { @class = "form-control col-md-10" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h5 class="control-label col-md-2">Lockout End Date in UTC</h5>
+                    <div>
+                        @Html.TextBoxFor(model => model.LockOutEndDate, htmlAttributes: new { @class = "form-control col-md-10" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

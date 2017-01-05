@@ -1,0 +1,27 @@
+﻿@model ViewModels.ImageViewModel
+@using Microsoft.AspNet.Identity
+@helper photos()
+{
+int i = 0;
+foreach (var item in Model.Images)
+{
+        <div class="user-photo-container">
+            <a href="@Url.Action("MakeProfilePicture", "Images", new { id = item.ID, type = "cover" })">
+            <img src="~/Images/@item.UserID/@item.Path" class="user-photos" alt="@item.FileName" />
+            </a>
+        </div>
+    i++;
+}
+}<!--End Helper-->
+
+<div class="modal fade and carousel slide album-modal" id="paperbox">
+    <div class="modal-dialog">
+        <div class="modal-content" id="paperbox-body">
+            <div class="modal-body">
+                @photos()
+            </div><!-- /.modal-body -->
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+

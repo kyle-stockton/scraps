@@ -1,0 +1,470 @@
+﻿@model ViewModels.EditProfileViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("EditProfile", "Users", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <img id="bg-img" src="~/Images/Home/sf.jpg">
+
+    <div class="form-horizontal edit-profile-container">
+        <h4>Edit User Profile</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <!-- HomeTown (hidden) -->
+        @Html.HiddenFor(model => model.HomeTownID)
+        @Html.HiddenFor(model => model.HomeTownName)
+        @Html.HiddenFor(model => model.HomeTownLat)
+        @Html.HiddenFor(model => model.HomeTownLng)
+
+        <!-- PastLocal (hidden) -->
+        @Html.HiddenFor(model => model.PastLocal0ID)
+        @Html.HiddenFor(model => model.PastLocal0Name)
+        @Html.HiddenFor(model => model.PastLocal0Lat)
+        @Html.HiddenFor(model => model.PastLocal0Lng)
+
+        @Html.HiddenFor(model => model.PastLocal1ID)
+        @Html.HiddenFor(model => model.PastLocal1Name)
+        @Html.HiddenFor(model => model.PastLocal1Lat)
+        @Html.HiddenFor(model => model.PastLocal1Lng)
+
+        @Html.HiddenFor(model => model.PastLocal2ID)
+        @Html.HiddenFor(model => model.PastLocal2Name)
+        @Html.HiddenFor(model => model.PastLocal2Lat)
+        @Html.HiddenFor(model => model.PastLocal2Lng)
+
+        @Html.HiddenFor(model => model.PastLocal3ID)
+        @Html.HiddenFor(model => model.PastLocal3Name)
+        @Html.HiddenFor(model => model.PastLocal3Lat)
+        @Html.HiddenFor(model => model.PastLocal3Lng)
+
+        @Html.HiddenFor(model => model.PastLocal4ID)
+        @Html.HiddenFor(model => model.PastLocal4Name)
+        @Html.HiddenFor(model => model.PastLocal4Lat)
+        @Html.HiddenFor(model => model.PastLocal4Lng)
+
+        @Html.HiddenFor(model => model.PastLocal5ID)
+        @Html.HiddenFor(model => model.PastLocal5Name)
+        @Html.HiddenFor(model => model.PastLocal5Lat)
+        @Html.HiddenFor(model => model.PastLocal5Lng)
+
+        @Html.HiddenFor(model => model.PastLocal6ID)
+        @Html.HiddenFor(model => model.PastLocal6Name)
+        @Html.HiddenFor(model => model.PastLocal6Lat)
+        @Html.HiddenFor(model => model.PastLocal6Lng)
+
+        @Html.HiddenFor(model => model.PastLocal7ID)
+        @Html.HiddenFor(model => model.PastLocal7Name)
+        @Html.HiddenFor(model => model.PastLocal7Lat)
+        @Html.HiddenFor(model => model.PastLocal7Lng)
+
+        @Html.HiddenFor(model => model.PastLocal8ID)
+        @Html.HiddenFor(model => model.PastLocal8Name)
+        @Html.HiddenFor(model => model.PastLocal8Lat)
+        @Html.HiddenFor(model => model.PastLocal8Lng)
+
+        @Html.HiddenFor(model => model.PastLocal9ID)
+        @Html.HiddenFor(model => model.PastLocal9Name)
+        @Html.HiddenFor(model => model.PastLocal9Lat)
+        @Html.HiddenFor(model => model.PastLocal9Lng)
+
+        @Html.HiddenFor(model => model.FirstEmptyPastLocal)
+        <!-- FavoritePlace (hidden) -->
+        @Html.HiddenFor(model => model.FavoritePlace0ID)
+        @Html.HiddenFor(model => model.FavoritePlace0Name)
+        @Html.HiddenFor(model => model.FavoritePlace0Lat)
+        @Html.HiddenFor(model => model.FavoritePlace0Lng)
+
+        @Html.HiddenFor(model => model.FavoritePlace1ID)
+        @Html.HiddenFor(model => model.FavoritePlace1Name)
+        @Html.HiddenFor(model => model.FavoritePlace1Lat)
+        @Html.HiddenFor(model => model.FavoritePlace1Lng)
+
+        @Html.HiddenFor(model => model.FavoritePlace2ID)
+        @Html.HiddenFor(model => model.FavoritePlace2Name)
+        @Html.HiddenFor(model => model.FavoritePlace2Lat)
+        @Html.HiddenFor(model => model.FavoritePlace2Lng)
+
+        @Html.HiddenFor(model => model.FavoritePlace3ID)
+        @Html.HiddenFor(model => model.FavoritePlace3Name)
+        @Html.HiddenFor(model => model.FavoritePlace3Lat)
+        @Html.HiddenFor(model => model.FavoritePlace3Lng)
+
+        @Html.HiddenFor(model => model.FavoritePlace4ID)
+        @Html.HiddenFor(model => model.FavoritePlace4Name)
+        @Html.HiddenFor(model => model.FavoritePlace4Lat)
+        @Html.HiddenFor(model => model.FavoritePlace4Lng)
+
+    <!-- LastTraveled (hidden) -->
+        @Html.HiddenFor(model => model.LastTraveledID)
+        @Html.HiddenFor(model => model.LastTraveledName)
+        @Html.HiddenFor(model => model.LastTraveledLat)
+        @Html.HiddenFor(model => model.LastTraveledLng)
+
+        <!--Images-->
+        <div class="form-group">
+            @Html.Label("Upload Photos", new { @class = "control-label col-md-4" })
+            <div class="col-md-4">
+                <input type="file" id="Images" class="input-file" name="Images" accept="image/*" data-multiple-caption="{count} Photos" multiple />
+                <label class="text-center" for="Images"><span>Select...</span></label>
+            </div>
+        </div>
+
+        <!--First Name-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!--Last Name-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!--About-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.About, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.About, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.About, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!--Home Town-->
+        <div class="form-group edit-group location-display" id="homeTownInput">
+            @Html.LabelFor(model => model.HomeTown, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8" onclick="EditLocation('homeTownInput')">
+                <h4>@Model.HomeTown</h4>
+                
+                @if (Model.HomeTown == null)
+                {
+                    <i class="fa fa-plus fa-2x"></i>
+                }
+                @Html.ValidationMessageFor(model => model.HomeTown, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!--PastLocal-->
+        <div class="form-group edit-group location-display" id="pastLocal0Input">
+            @Html.LabelFor(model => model.PastLocal0, htmlAttributes: new { @class = "control-label col-md-4" })
+            @if (Model.PastLocal0 != null)
+                {
+                <div class="col-md-8" onclick="EditLocation('pastLocal0Input')">
+                    <h4>@Model.PastLocal0</h4>
+                    @Html.ValidationMessageFor(model => model.PastLocal0, "", new { @class = "text-danger" })
+                </div>
+            }
+            else
+            {
+                <div class="">
+                    <h4></h4>
+                </div>
+            }
+        </div>
+            <div class="form-group edit-group">
+            @if (Model.PastLocal1 != null)
+            {
+                <div class="col-md-8 col-md-offset-4 location-display" id="pastLocal1Input" onclick="EditLocation('pastLocal1Input')">
+                    <h4>@Model.PastLocal1</h4>
+                    @Html.ValidationMessageFor(model => model.PastLocal1, "", new { @class = "text-danger" })
+                </div>
+
+            }
+            else
+            {
+                <div class="" id="pastLocal1Input">
+                    <h4></h4>
+                </div>
+            }
+            @if (Model.PastLocal2 != null)
+            {
+                <div class="col-md-8 col-md-offset-4 location-display" id="pastLocal2Input" onclick="EditLocation('pastLocal2Input')">
+                    <h4>@Model.PastLocal2</h4>
+                    @Html.ValidationMessageFor(model => model.PastLocal2, "", new { @class = "text-danger" })
+                </div>
+            }
+            else
+            {
+                <div class="" id="pastLocal2Input">
+                    <h4></h4>
+                </div>
+            }
+            @if (Model.PastLocal3 != null)
+            {
+                <div class="col-md-8 col-md-offset-4 location-display" id="pastLocal3Input" onclick="EditLocation('pastLocal3Input')">
+                    <h4>@Model.PastLocal3</h4>
+                    @Html.ValidationMessageFor(model => model.PastLocal3, "", new { @class = "text-danger" })
+                </div>
+            }
+            else
+            {
+                <div class="" id="pastLocal3Input">
+                    <h4></h4>
+                </div>
+            }
+            @if (Model.PastLocal4 != null)
+            {
+                <div class="col-md-8 col-md-offset-4 location-display" id="pastLocal4Input" onclick="EditLocation('pastLocal4Input')">
+                    <h4>@Model.PastLocal4</h4>
+
+                    @Html.ValidationMessageFor(model => model.PastLocal4, "", new { @class = "text-danger" })
+                </div>
+            }
+            else
+            {
+                <div class="" id="pastLocal4Input">
+                    <h4></h4>
+                </div>
+            }
+            @if (Model.PastLocal5 != null)
+            {
+                <div class="col-md-8 col-md-offset-4 location-display" id="pastLocal5Input" onclick="EditLocation('pastLocal5Input')">
+                    <h4>@Model.PastLocal5</h4>
+                    @Html.ValidationMessageFor(model => model.PastLocal5, "", new { @class = "text-danger" })
+                </div>
+            }
+            else
+            {
+                <div class="" id="pastLocal5Input">
+                    <h4></h4>
+                </div>
+            }
+            @if (Model.PastLocal6 != null)
+            {
+                <div class="col-md-8 col-md-offset-4 location-display" id="pastLocal6Input" onclick="EditLocation('pastLocal6Input')">
+                    <h4>@Model.PastLocal6</h4>
+                    @Html.ValidationMessageFor(model => model.PastLocal6, "", new { @class = "text-danger" })
+                </div>
+            }
+            else
+            {
+                <div class="" id="pastLocal6Input">
+                    <h4></h4>
+                </div>
+            }
+            @if (Model.PastLocal7 != null)
+            {
+                <div class="col-md-8 col-md-offset-4 location-display" id="pastLocal7Input" onclick="EditLocation('pastLocal7Input')">
+                    <h4>@Model.PastLocal7</h4>
+
+                    @Html.ValidationMessageFor(model => model.PastLocal7, "", new { @class = "text-danger" })
+                </div>
+            }
+            else
+            {
+                <div class="" id="pastLocal7Input">
+                    <h4></h4>
+                </div>
+            }
+            @if (Model.PastLocal8 != null)
+            {
+                <div class="col-md-8 col-md-offset-4 location-display" id="pastLocal8Input" onclick="EditLocation('pastLocal8Input')">
+                    <h4>@Model.PastLocal8</h4>
+
+                    @Html.ValidationMessageFor(model => model.PastLocal8, "", new { @class = "text-danger" })
+                </div>
+            }
+            else
+            {
+                <div class="" id="pastLocal8Input">
+                    <h4></h4>
+                </div>
+            }
+            @if (Model.PastLocal9 != null)
+            {
+                <div class="col-md-8 col-md-offset-4 location-display" id="pastLocal9Input" onclick="EditLocation('pastLocal9Input')">
+                    <h4>@Model.PastLocal9</h4>
+
+                    @Html.ValidationMessageFor(model => model.PastLocal9, "", new { @class = "text-danger" })
+                </div>
+            }
+            else
+            {
+                <div class="" id="pastLocal9Input">
+                    <h4></h4>
+                </div>
+            }
+            @if (Model.PastLocal9 == null)
+                {
+                <div class="col-md-8 col-md-offset-4">
+                    <input type="button" class="btn btn-default" onclick="AddPastLocalLocation(@Model.FirstEmptyPastLocal)" value="Add location" id="add-past-btn" />
+                </div>
+            }
+        </div>
+        <!--FavoritePlace-->
+        <div class="form-group edit-group location-display" id="favoritePlace0Input">
+            @Html.LabelFor(model => model.FavoritePlace0, htmlAttributes: new { @class = "control-label col-md-4" })
+            @if (Model.FavoritePlace0 != null)
+            {
+                <div class="col-md-8" onclick="EditLocation('favoritePlace0Input')">
+                    <h4>@Model.FavoritePlace0</h4>
+                    @Html.ValidationMessageFor(model => model.FavoritePlace0, "", new { @class = "text-danger" })
+                </div>
+            }
+            else
+            {
+                <div class="" id="favoritePlace0Input">
+                    <h4></h4>
+                </div>
+            }
+        </div>
+            <div class="form-group edit-group">
+            @if (Model.FavoritePlace1 != null)
+            {
+                <div class="col-md-8 col-md-offset-4 location-display" id="favoritePlace1Input" onclick="EditLocation('favoritePlace1Input')">
+                    <h4>@Model.FavoritePlace1</h4>
+                    @Html.ValidationMessageFor(model => model.FavoritePlace1, "", new { @class = "text-danger" })
+                </div>
+            }
+            else
+            {
+                <div class="" id="favoritePlace1Input">
+                    <h4></h4>
+                </div>
+            }
+            @if (Model.FavoritePlace2 != null)
+            {
+                <div class="col-md-8 col-md-offset-4 location-display" id="favoritePlace2Input" onclick="EditLocation('favoritePlace2Input')">
+                    <h4>@Model.FavoritePlace2</h4>
+                    @Html.ValidationMessageFor(model => model.FavoritePlace2, "", new { @class = "text-danger" })
+                </div>
+            }
+            else
+            {
+                <div class="" id="favoritePlace2Input">
+                    <h4></h4>
+                </div>
+            }
+            @if (Model.FavoritePlace3 != null)
+            {
+                <div class="col-md-8 col-md-offset-4 location-display" id="favoritePlace3Input" onclick="EditLocation('favoritePlace3Input')">
+                    <h4>@Model.FavoritePlace3</h4>
+                    @Html.ValidationMessageFor(model => model.FavoritePlace3, "", new { @class = "text-danger" })
+                </div>
+            }
+            else
+            {
+                <div class="" id="favoritePlace3Input">
+                    <h4></h4>
+                </div>
+            }
+            @if (Model.FavoritePlace4 != null)
+            {
+                <div class="col-md-8 col-md-offset-4 location-display" id="favoritePlace4Input" onclick="EditLocation('favoritePlace4Input')">
+                    <h4>@Model.FavoritePlace4</h4>
+                    @Html.ValidationMessageFor(model => model.FavoritePlace4, "", new { @class = "text-danger" })
+                </div>
+            }
+            else
+            {
+                <div class="" id="favoritePlace4Input">
+                    <h4></h4>
+                </div>
+            }
+            @if (Model.FavoritePlace4 == null)
+                {
+                <div class="col-md-8 col-md-offset-4">
+                    <input type="button" class="btn btn-default" onclick="AddFavoritePlaceLocation(@Model.FirstEmptyFavoritePlace)" value="Add location" id="add-favorite-btn" />
+                </div>
+            }
+        </div>
+
+
+        <!--LastTraveled-->
+        <div class="form-group edit-group" id="lastTraveledInput">
+            @Html.LabelFor(model => model.LastTraveled, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8" onclick="EditLocation('lastTraveledInput')">
+                <h4>@Model.LastTraveled</h4>
+                @if (Model.LastTraveled == null)
+                {
+                    <i class="fa fa-plus fa-2x"></i>
+                }
+                @Html.ValidationMessageFor(model => model.LastTraveled, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!--Autocomplete-->
+        <div class="form-group" id="autoCompleteInput">
+            <label class="control-label col-md-4"></label>
+            <div class="col-md-8">
+                @Html.Editor("Search", new { htmlAttributes = new { @class = "form-control", id = "autocomplete", onFocus = "geolocate()", placeholder = "Location", type = "text" } })
+
+            </div>
+        </div>
+
+        <!--Date of Birth-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.DOB, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!--Private Profile-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.PrivateProfile, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8 chkbx">
+                @Html.CheckBoxFor(model => model.PrivateProfile, true)
+                @Html.ValidationMessageFor(model => model.PrivateProfile, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!--Submit-->
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-8">
+                <input type="submit" value="Save" class="btn btn-default" id="edit-submit-btn"/>
+            </div>
+        </div>
+    </div>
+}
+
+@*<div>
+        Html.ActionLink("Back to List", "Index")
+</div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+    var inputs = document.querySelectorAll('.input-file');
+    Array.prototype.forEach.call(inputs, function (input) {
+        var label = input.nextElementSibling,
+            labelVal = label.innerHTML;
+
+        input.addEventListener('change', function (e) {
+            var fileName = '';
+            if (this.files && this.files.length > 1)
+                fileName = (this.getAttribute('data-multiple-caption') || '').replace('{count}', this.files.length);
+            else
+                fileName = e.target.value.split('\\').pop();
+
+            if (fileName)
+                label.querySelector('span').innerHTML = fileName;
+            else
+                label.innerHTML = labelVal;
+        });
+    });
+</script>
+
+
+
+<script src="~/Scripts/Custom/EditLocations.js"></script>
+<!--Google Places API-->
+<script src="~/Scripts/Custom/GoogleAutoCompleteCities.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBI5B2snURiIE8VkeuNYL2Es3ZZf8veRf4&libraries=places&callback=initAutocomplete" async defer></script>
+
+

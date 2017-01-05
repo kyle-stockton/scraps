@@ -1,0 +1,89 @@
+﻿@model ViewModels.AboutViewModel
+
+<div id="about" class="tab-pane" role="tabpanel">
+        <div class="row" style="padding-bottom:10px;">
+            <div class="col-sm-2 about-image">
+                 <img class="about-image" src="~/Images/@Model.ProfilePicturePath" id="about-picture" alt="@Model.ProfilePictureName" /><br />                
+            </div>
+            <div class="col-sm-6" id="about-intro">
+                <h1> @Model.FirstName @Model.LastName</h1>
+            <h2 onclick="ViewPlace('@Model.HomeTown.PlaceID')"class= "about-clickable">@Model.HomeTown.FormattedAddress</h2>
+                <ul class="container about-about">
+                    <li>@Model.About</li>
+                    
+                </ul>
+             </div>   
+            <div class="col-sm-3 text-center" id="about-stats">
+                <h3 class="about-descriptor">Age</h3>
+                <h4 class="about-value">@Model.Age</h4>
+                <h3 class="about-descriptor">Birthday</h3>
+                <h4 class="about-value">@Model.Birthday</h4>
+                <h3 class="about-descriptor">Member Since</h3>
+                <h4 class="about-value">@Model.MemberSince</h4>
+
+            </div>
+            <div class="col-sm-2">
+
+            </div>
+            </div>
+        
+           
+           
+           <div class="row text-center" style= "width:75%;margin:auto;">
+                  <div class="col-sm-4">
+                      <h3 class="about-descriptor">Past Local</h3>
+                  </div>
+                  <div class="col-sm-4">
+                      <h3 class="about-descriptor">Last Traveled</h3>
+                  </div>
+                  <div class="col-sm-4">
+                      <h3 class="about-descriptor">Favorite Place</h3>
+                   </div>
+           </div>
+          <div class="row text-center" style="width:75%;margin:auto;">
+                 <div class="container about-list col-sm-4">
+                     @if(Model.PastLocals.Count > 1)
+                     {
+                         foreach (var item in Model.PastLocals)
+                         {
+                             <h4 onclick="ViewPlace('@item.PlaceID')" class="about-value about-clickable">@item.FormattedAddress</h4>
+                         }
+                     }
+                 </div>
+                 <div class="col-sm-4">
+                    <h4 onclick="ViewPlace('@Model.LastTraveled.PlaceID')" class="about-value about-clickable">@Model.LastTraveled.FormattedAddress</h4>
+                 </div>
+              <div class="container about-list col-sm-4">
+                  @if (Model.FavoritePlaces.Count != 0)
+                  {
+                    foreach (var item in Model.FavoritePlaces)
+                    {
+                        <h4 onclick="ViewPlace('@item.PlaceID')" class="about-value about-clickable">@item.FormattedAddress</h4>
+                    }
+                  }
+              </div>
+          </div>
+    <div class="row text-center about-stats-large" style="width:75%;margin:auto;margin-top:1em">
+        <div class="col-sm-4">
+            <h3 class="about-descriptor">Age</h3>
+        </div>
+        <div class="col-sm-4">
+            <h3 class="about-descriptor">Birthday</h3>
+        </div>
+        <div class="col-sm-4">
+            <h3 class="about-descriptor">Member Since</h3>
+        </div>
+    </div>
+    <div class="row text-center about-stats-large" style="width:75%;margin:auto;">
+        <div class="col-sm-4">
+            <h4 class="about-value">@Model.Age</h4>
+        </div>
+        <div class="col-sm-4">
+            <h4 class="about-value">@Model.Birthday</h4>
+        </div>
+        <div class="col-sm-4">
+            <h4 class="about-value">@Model.MemberSince</h4>
+        </div>
+    </div>
+     
+</div>   
